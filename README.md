@@ -1,3 +1,3 @@
 # Stone Grind
 
-Action RPG using Unity Photon Network PUN2
+Action RPG using Photon Unity Networking 2 (PUN2)
