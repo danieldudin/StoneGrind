@@ -42,8 +42,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 animation.SetInteger("condition", 1); 
                 _navMeshAgent.SetDestination(placedTarget.transform.position);
-            }
-            if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
+            } else if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
             {
                 if (!_navMeshAgent.hasPath || _navMeshAgent.velocity.sqrMagnitude == 0f)
                 {

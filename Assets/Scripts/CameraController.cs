@@ -4,25 +4,37 @@ using System.Collections.Generic;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject player;  //The offset of the camera to centrate the player in the X axis
-    public float offsetX = 0;  //The offset of the camera to centrate the player in the Z axis
-    public float offsetZ = -10;  //The maximum distance permited to the camera to be far from the player, its used to     make a smooth movement
-    public float maximumDistance = 2;  //The velocity of your player, used to determine que speed of the camera
-    public float playerVelocity = 10;
 
-    private float movementX;
-    private float movementZ;
+    public Transform target;
+    public float distance = 5f;
+    public float minDistance = 1f;
+    public float maxDistance = 7f;
+    public Vector3 offset;
+    public float smoothSpeed = 5f;
+    public float scrollSensitivity = 1;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        movementX = ((player.transform.position.x + offsetX - this.transform.position.x)) / maximumDistance;
-        movementZ = ((player.transform.position.z + offsetZ - this.transform.position.z)) / maximumDistance;
-        this.transform.position += new Vector3((movementX * playerVelocity * Time.deltaTime), 0, (movementZ * playerVelocity * Time.deltaTime));
+        if (!target) {
+            Debug.Log("Follow target not found");
+
+            return;
+        }
+
+        float num = Input.GetAxis("Mouse ScrollWheel");
+
+        distance -= num * scrollSensitivity;
+        distance = Mathf.Clamp(distance, minDistance, maxDistance);
+
+        Vector3 pos = target.position + offset;
+        pos -= transform.forward * distance;
+
+        transform.position = Vector3.Lerp(transform.position, pos, smoothSpeed * Time.deltaTime);
     }
 }
