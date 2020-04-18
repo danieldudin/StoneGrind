@@ -4,11 +4,10 @@ using System.Collections.Generic;
 
 public class CameraController : MonoBehaviour
 {
-
     public Transform target;
-    public float distance = 5f;
-    public float minDistance = 1f;
-    public float maxDistance = 7f;
+    public float distance = 7f;
+    public float minDistance = 3f;
+    public float maxDistance = 8f;
     public Vector3 offset;
     public float smoothSpeed = 5f;
     public float scrollSensitivity = 1;
@@ -21,7 +20,8 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (!target) {
+        if (!target)
+        {
             Debug.Log("Follow target not found");
 
             return;

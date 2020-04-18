@@ -14,7 +14,7 @@ public class PlaceTarget : MonoBehaviour
 
     private void Update()
     {
-        if (!Input.GetMouseButtonDown(0))
+        if (!Input.GetMouseButton(0))
         {
             return;
         }
@@ -22,7 +22,7 @@ public class PlaceTarget : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (!Physics.Raycast(ray, out hit))
+        if (!Physics.Raycast(ray, out hit) || PointerOverUI())
         {
             return;
         }
@@ -38,5 +38,10 @@ public class PlaceTarget : MonoBehaviour
                 UpdateTarget(transform);
             }
         }
+    }
+
+    public bool PointerOverUI()
+    {
+        return UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
     }
 }

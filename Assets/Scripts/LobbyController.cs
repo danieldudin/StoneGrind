@@ -7,15 +7,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
-public class LobbyController : MonoBehaviourPunCallbacks
+public class LobbyController : MonoBehaviourPunCallbacks, ILobbyCallbacks 
 {
-    [SerializeField]
-    private GameObject lobbyPanel = default;
-    [SerializeField]
-    private GameObject mainPanel = default;
-    [SerializeField]
-    private TMP_InputField playerNameInput = default;
-
     private string roomName;
     private int roomSize;
 
@@ -28,39 +21,6 @@ public class LobbyController : MonoBehaviourPunCallbacks
     private void Start()
     {
         roomListings = new List<RoomInfo>();
-
-        if (PlayerPrefs.HasKey("NickName"))
-        {
-            if (PlayerPrefs.GetString("NickName") == "")
-            {
-                PhotonNetwork.NickName = "Player " + Random.Range(0, 1000);
-            }
-            else
-            {
-                PhotonNetwork.NickName = PlayerPrefs.GetString("NickName");
-            }
-        }
-        else
-        {
-            PhotonNetwork.NickName = "Player " + Random.Range(0, 1000);
-        }
-        playerNameInput.text = PhotonNetwork.NickName;
-    }
-
-    public override void OnJoinedRoom() {
-        PhotonNetwork.LoadLevel(2);
-    }
-
-    public void PlayerNameUpdate(string nameInput)
-    {
-        PhotonNetwork.NickName = nameInput;
-        PlayerPrefs.SetString("NickName", nameInput);
-    }
-
-    public void JoinLobbyOnClick() {
-        mainPanel.SetActive(false);
-        lobbyPanel.SetActive(true);
-        PhotonNetwork.JoinLobby();
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -125,15 +85,35 @@ public class LobbyController : MonoBehaviourPunCallbacks
         PhotonNetwork.CreateRoom(roomName, roomOptions);
     }
 
+    public override void OnJoinedRoom()
+    {
+        Debug.Log("Room joined");
+        PhotonNetwork.LoadLevel(3);
+    }
+
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         Debug.Log("Failed to create room");
     }
 
-    public void LeaveLobby() {
-        mainPanel.SetActive(true);
-        lobbyPanel.SetActive(false);
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        base.OnPlayerLeftRoom(otherPlayer);
+        Debug.Log(otherPlayer.NickName + " has left the game");
+    }
 
+    public override void OnLeftRoom()
+    {
+        Debug.Log("Room left, going back to character select");
+    }
+
+    public override void OnLeftLobby()
+    {
+        Debug.Log("Lobby left, going back to character select");
+        PhotonNetwork.LoadLevel(1);
+    }
+
+    public void LeaveLobby() {
         PhotonNetwork.LeaveLobby();
     }
 }

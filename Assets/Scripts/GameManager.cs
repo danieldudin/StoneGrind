@@ -30,4 +30,37 @@ public class GameManager : MonoBehaviour
 
         PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Warrior"), GameManager.GS.spawnPoints[spawnPicker].position, GameManager.GS.spawnPoints[spawnPicker].rotation, 0);
     }
+
+    public void DisconnectPlayer() 
+    {
+        StartCoroutine(DisconnectAndLoad());
+    }
+
+    public void LeaveRoom() {
+        StartCoroutine(LeaveRoomAndLoad());
+    }
+
+    IEnumerator DisconnectAndLoad() 
+    {
+        PhotonNetwork.Disconnect();
+
+        while (PhotonNetwork.IsConnected) 
+        {
+            yield return null;
+        }
+
+        SceneManager.LoadScene(0);
+    }
+
+    IEnumerator LeaveRoomAndLoad()
+    {
+        PhotonNetwork.LeaveRoom();
+
+        while (PhotonNetwork.InRoom)
+        {
+            yield return null;
+        }
+
+        PhotonNetwork.LoadLevel(1);
+    }
 }
