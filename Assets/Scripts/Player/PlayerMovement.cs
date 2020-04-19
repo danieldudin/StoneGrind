@@ -68,10 +68,11 @@ public class PlayerMovement : MonoBehaviour
 
             if (interactedObject.tag == "InteractableObject") 
             {
-
+                interactedObject.GetComponent<Interactable>().MoveToInteraction(playerAgent);
             }
             else 
             {
+                playerAgent.stoppingDistance = 0;
                 playerAgent.destination = interactionInfo.point;
 
                 playerAnimator.SetInteger("condition", 1);
