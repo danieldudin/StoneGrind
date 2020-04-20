@@ -9,8 +9,22 @@ public class CharacterStats : MonoBehaviour
     void Start() 
     {
         stats.Add(new BaseStat(4, "Power", "Your Power level."));
-        stats[0].AddStatBonus(new StatBonus(5));
+        stats.Add(new BaseStat(2, "Vitality", "Your Health Points level."));
+    }
 
-        Debug.Log("Calculated stat value: " + stats[0].GetCalculatedStatValue());
+    public void AddStatBonus(List<BaseStat> statBonuses) 
+    {
+        foreach (BaseStat statBonus in statBonuses)
+        {
+            stats.Find(x => x.StatName == statBonus.StatName).AddStatBonus(new StatBonus(statBonus.BaseValue));
+        }
+    }
+
+    public void RemoveStatBonus(List<BaseStat> statBonuses)
+    {
+        foreach (BaseStat statBonus in statBonuses)
+        {
+            stats.Find(x => x.StatName == statBonus.StatName).RemoveStatBonus(new StatBonus(statBonus.BaseValue));
+        }
     }
 }
