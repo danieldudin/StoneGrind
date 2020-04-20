@@ -633,9 +633,10 @@ GameObject:
   - component: {fileID: 3116413870296187666}
   - component: {fileID: -2217076094260019532}
   - component: {fileID: 4332693201369508279}
+  - component: {fileID: -6455145140364654895}
+  - component: {fileID: 4399089955689507391}
   - component: {fileID: -7909309648997476263}
   - component: {fileID: 7793493532849071425}
-  - component: {fileID: 4399089955689507391}
   - component: {fileID: -8556324094940566724}
   m_Layer: 0
   m_Name: Warrior
@@ -756,6 +757,32 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-6455145140364654895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6349605920406919274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43020568ff58f584fa790c44f7ca93bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4399089955689507391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6349605920406919274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3192dd11486d091489da45730a64c20a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAgent: {fileID: 0}
+  playerAnimator: {fileID: 0}
 --- !u!114 &-7909309648997476263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,20 +821,6 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
---- !u!114 &4399089955689507391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6349605920406919274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3192dd11486d091489da45730a64c20a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAgent: {fileID: 0}
-  playerAnimator: {fileID: 0}
 --- !u!114 &-8556324094940566724
 MonoBehaviour:
   m_ObjectHideFlags: 0
