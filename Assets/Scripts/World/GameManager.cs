@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Creating Player");
         int spawnPicker = Random.Range(0, GameManager.GS.spawnPoints.Length);
 
-        PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Warrior_NoWeapon"), GameManager.GS.spawnPoints[spawnPicker].position, GameManager.GS.spawnPoints[spawnPicker].rotation, 0);
+        PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Player"), GameManager.GS.spawnPoints[spawnPicker].position, GameManager.GS.spawnPoints[spawnPicker].rotation, 0);
     }
 
     public void DisconnectPlayer() 

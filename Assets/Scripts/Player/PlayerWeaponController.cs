@@ -9,6 +9,7 @@ public class PlayerWeaponController : MonoBehaviour
 {
     public GameObject playerHand;
     public GameObject EquippedWeapon { get; set; }
+    public Animator playerAnimator;
 
     IWeapon equippedWeapon;
     private PhotonView PV;
@@ -17,6 +18,7 @@ public class PlayerWeaponController : MonoBehaviour
     void Start() 
     {
         PV = GetComponent<PhotonView>();
+        playerAnimator = GetComponent<Animator>();
         characterStats = GetComponent<CharacterStats>();
     }
 
@@ -30,7 +32,7 @@ public class PlayerWeaponController : MonoBehaviour
                 Destroy(playerHand.transform.GetChild(0).gameObject);
             }
 
-            EquippedWeapon = PhotonNetwork.Instantiate(Path.Combine("Prefabs/Items/Weapons", itemToEquip.ObjectSlug), playerHand.transform.position, playerHand.transform.rotation, 0);
+            EquippedWeapon = PhotonNetwork.Instantiate(Path.Combine("Prefabs/Items/Weapons", itemToEquip.ObjectSlug), playerHand.transform.position, Quaternion.identity, 0);
 
             equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();
             equippedWeapon.Stats = itemToEquip.Stats;
@@ -43,6 +45,11 @@ public class PlayerWeaponController : MonoBehaviour
         }
     }
 
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.X)) {
+            PerformWeaponAttack();
+        }
+    }
     public void PerformWeaponAttack() 
     {
         EquippedWeapon.GetComponent<IWeapon>().PerformAttack();

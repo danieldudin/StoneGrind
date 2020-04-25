@@ -37,15 +37,9 @@ public class PlayerMovement : MonoBehaviour
                 {
                     if (!playerAgent.hasPath || playerAgent.velocity.sqrMagnitude == 0f)
                     {
-                        playerAnimator.SetBool("running", false);
-                        playerAnimator.SetInteger("condition", 0);
+                        // Destination reached
                     }
                 }
-            }
-
-            if (Input.GetKey(KeyCode.Alpha1))
-            {
-                Attack();
             }
 
             if (!Input.GetMouseButton(0) || PointerOverUI())
@@ -73,9 +67,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 playerAgent.stoppingDistance = 0;
                 playerAgent.destination = interactionInfo.point;
-
-                playerAnimator.SetInteger("condition", 1);
-                playerAnimator.SetBool("running", true);
             }
         }
     }
@@ -92,20 +83,5 @@ public class PlayerMovement : MonoBehaviour
         {
             Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
         }
-
-    }
-
-    void Attack() {
-        StartCoroutine(AttackRoutine());
-    }
-
-    IEnumerator AttackRoutine() {
-        playerAnimator.SetBool("attacking", true);
-        playerAnimator.SetInteger("condition", 2);
-
-        yield return new WaitForSeconds(1);
-
-        playerAnimator.SetInteger("condition", 0);
-        playerAnimator.SetBool("attacking", false);
     }
 }
