@@ -1,9 +1,4 @@
-﻿using Photon.Pun;
-using System.IO;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,39 +23,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("Creating Player");
         int spawnPicker = Random.Range(0, GameManager.GS.spawnPoints.Length);
 
-        PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Player"), GameManager.GS.spawnPoints[spawnPicker].position, GameManager.GS.spawnPoints[spawnPicker].rotation, 0);
-    }
-
-    public void DisconnectPlayer() 
-    {
-        StartCoroutine(DisconnectAndLoad());
-    }
-
-    public void LeaveRoom() {
-        StartCoroutine(LeaveRoomAndLoad());
-    }
-
-    IEnumerator DisconnectAndLoad() 
-    {
-        PhotonNetwork.Disconnect();
-
-        while (PhotonNetwork.IsConnected) 
-        {
-            yield return null;
-        }
-
-        SceneManager.LoadScene(0);
-    }
-
-    IEnumerator LeaveRoomAndLoad()
-    {
-        PhotonNetwork.LeaveRoom();
-
-        while (PhotonNetwork.InRoom)
-        {
-            yield return null;
-        }
-
-        PhotonNetwork.LoadLevel(1);
+        // PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Player"), GameManager.GS.spawnPoints[spawnPicker].position, GameManager.GS.spawnPoints[spawnPicker].rotation, 0);
     }
 }

@@ -1,9 +1,4 @@
-﻿using Photon.Pun;
-using Photon.Realtime;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class Interactable : MonoBehaviour
@@ -22,12 +17,10 @@ public class Interactable : MonoBehaviour
     }
 
 
-    void Update() 
-    {
+    void Update() {
         if (!hasInteracted && playerAgent != null && !playerAgent.pathPending)
         {
-            if (playerAgent.remainingDistance <= playerAgent.stoppingDistance) 
-            {
+            if (playerAgent.remainingDistance <= playerAgent.stoppingDistance) {
                 Interact();
 
                 hasInteracted = true;
@@ -35,8 +28,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public virtual void Interact() 
-    {
+    public virtual void Interact() {
         Debug.Log("Interacting with base class");
     }
 }

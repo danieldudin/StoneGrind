@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform target;
+    public Transform Target { get; set; }
     public float distance = 7f;
     public float minDistance = 3f;
     public float maxDistance = 8f;
@@ -12,15 +12,10 @@ public class CameraController : MonoBehaviour
     public float smoothSpeed = 5f;
     public float scrollSensitivity = 1;
 
-    void Start()
-    {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-
     // Update is called once per frame
     void LateUpdate()
     {
-        if (!target)
+        if (!Target)
         {
             Debug.Log("Follow target not found");
 
@@ -32,7 +27,7 @@ public class CameraController : MonoBehaviour
         distance -= num * scrollSensitivity;
         distance = Mathf.Clamp(distance, minDistance, maxDistance);
 
-        Vector3 pos = target.position + offset;
+        Vector3 pos = Target.position + offset;
         pos -= transform.forward * distance;
 
         transform.position = Vector3.Lerp(transform.position, pos, smoothSpeed * Time.deltaTime);

@@ -1,5 +1,4 @@
-﻿using Photon.Pun;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,63 +7,55 @@ using UnityEngine.AI;
 public class PlayerMovement : MonoBehaviour
 {
     public NavMeshAgent playerAgent;
-    private PhotonView PV;
 
     public Animator playerAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
-        PV = GetComponent<PhotonView>();
         playerAnimator = GetComponent<Animator>();
 
-        if (PV.IsMine) {
-            playerAgent = this.GetComponent<NavMeshAgent>();
+        playerAgent = this.GetComponent<NavMeshAgent>();
 
-            if (playerAgent == null)
-            {
-                Debug.Log("The nav mesh agent component is not attached to the Character");
-            }
+        if (playerAgent == null)
+        {
+            Debug.Log("The nav mesh agent component is not attached to the Character");
         }
+
     }
 
     void Update() {
-        if (PV.IsMine) {
-
-            if (!playerAgent.pathPending)
+        if (!playerAgent.pathPending)
+        {
+            if (playerAgent.remainingDistance <= playerAgent.stoppingDistance)
             {
-                if (playerAgent.remainingDistance <= playerAgent.stoppingDistance)
+                if (!playerAgent.hasPath || playerAgent.velocity.sqrMagnitude == 0f)
                 {
-                    if (!playerAgent.hasPath || playerAgent.velocity.sqrMagnitude == 0f)
-                    {
-                        // Destination reached
-                    }
+                    // Destination reached
                 }
             }
-
-            if (!Input.GetMouseButton(0) || PointerOverUI())
-            {
-                return;
-            }
-
-            GetInteraction();
         }
+
+        if (!Input.GetMouseButton(0) || PointerOverUI())
+        {
+            return;
+        }
+
+        GetInteraction();
     }
 
     void GetInteraction() {
         Ray interactionRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit interactionInfo;
 
-        if (Physics.Raycast(interactionRay, out interactionInfo, Mathf.Infinity)) 
+        if (Physics.Raycast(interactionRay, out interactionInfo, Mathf.Infinity))
         {
             GameObject interactedObject = interactionInfo.collider.gameObject;
 
-            if (interactedObject.tag == "InteractableObject") 
-            {
+            if (interactedObject.tag == "InteractableObject") {
                 interactedObject.GetComponent<Interactable>().MoveToInteraction(playerAgent);
             }
-            else 
-            {
+            else {
                 playerAgent.stoppingDistance = 0;
                 playerAgent.destination = interactionInfo.point;
             }

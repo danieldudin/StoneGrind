@@ -1,5 +1,4 @@
-﻿using Photon.Pun;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,9 +21,5 @@ public class RoomButton : MonoBehaviour
 
         nameText.text = nameInput;
         sizeText.text = countInput + "/" + sizeInput;
-    }
-
-    public void JoinRoomOnClick() {
-        PhotonNetwork.JoinRoom(roomName);
     }
 }
