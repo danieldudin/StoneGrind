@@ -12,7 +12,7 @@ public class NetworkPlayerManager : MonoBehaviour
     [Tooltip("The DarkRift client to communicate on.")]
     UnityClient client;
 
-    public Dictionary<ushort, AgarObject> networkPlayers = new Dictionary<ushort, AgarObject>();
+    public Dictionary<ushort, PlayerObject> networkPlayers = new Dictionary<ushort, PlayerObject>();
 
     public void Awake()
     {
@@ -34,27 +34,17 @@ public class NetworkPlayerManager : MonoBehaviour
                         networkPlayers[id].SetMovePosition(newPosition);
                 }
             }
-            else if (message.Tag == Tags.SetRadiusTag)
-            {
-                using (DarkRiftReader reader = message.GetReader())
-                {
-                    ushort id = reader.ReadUInt16();
-
-                    if (networkPlayers.ContainsKey(id))
-                        networkPlayers[id].SetRadius(reader.ReadSingle());
-                }
-            }
         }
     }
 
-    public void Add(ushort id, AgarObject player)
+    public void Add(ushort id, PlayerObject player)
     {
         networkPlayers.Add(id, player);
     }
 
     public void DestroyPlayer(ushort id)
     {
-        AgarObject o = networkPlayers[id];
+        PlayerObject o = networkPlayers[id];
 
         Destroy(o.gameObject);
 

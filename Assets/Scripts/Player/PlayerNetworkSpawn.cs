@@ -82,7 +82,7 @@ public class PlayerNetworkSpawn : MonoBehaviour
                     obj = Instantiate(networkPrefab, position, Quaternion.identity) as GameObject;
                 }
 
-                AgarObject agarObj = obj.GetComponent<AgarObject>();
+                PlayerObject agarObj = obj.GetComponent<PlayerObject>();
 
                 networkPlayerManager.Add(id, agarObj);
             }
