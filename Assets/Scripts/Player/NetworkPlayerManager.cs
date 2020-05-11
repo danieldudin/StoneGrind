@@ -10,7 +10,7 @@ public class NetworkPlayerManager : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("The DarkRift client to communicate on.")]
-    UnityClient client;
+    UnityClient client = default;
 
     public Dictionary<ushort, PlayerObject> networkPlayers = new Dictionary<ushort, PlayerObject>();
 

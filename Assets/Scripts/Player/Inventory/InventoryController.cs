@@ -4,23 +4,34 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
+    public static InventoryController Instance { get; set; }
     public PlayerWeaponController playerWeaponController;
-    public Item sword;
-
+    public ConsumableController consumableController;
+    public List<Item> playerItems = new List<Item>();
 
     void Start() {
-        playerWeaponController = GetComponent<PlayerWeaponController>();
-        List<BaseStat> swordStats = new List<BaseStat>();
 
-        swordStats.Add(new BaseStat(6, "Power", "Your power level."));
-        sword = new Item(swordStats, "Staff");
+        if (Instance != null && Instance != this) {
+            Destroy(gameObject);
+        } else {
+            Instance = this;
+        }
+
+        playerWeaponController = GetComponent<PlayerWeaponController>();
+        consumableController = GetComponent<ConsumableController>();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            playerWeaponController.EquipWeapon(sword);
-        }
+    public void GiveItem(string itemSlug) {
+        playerItems.Add(ItemDatabase.Instance.GetItem(itemSlug));
+
+        Debug.Log(playerItems.Count + "items in inventory. Added " + itemSlug);
+    }
+
+    public void EquipItem(Item itemToEquip) {
+        playerWeaponController.EquipWeapon(itemToEquip);
+    }
+
+    public void ConsumeItem(Item itemToConsume) {
+        consumableController.ConsumeItem(itemToConsume);
     }
 }

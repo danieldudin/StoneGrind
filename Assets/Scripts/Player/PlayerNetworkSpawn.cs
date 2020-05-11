@@ -8,19 +8,19 @@ public class PlayerNetworkSpawn : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("The DarkRift client to communicate on.")]
-    UnityClient client;
+    UnityClient client = default;
 
     [SerializeField]
     [Tooltip("The controllable player prefab.")]
-    GameObject controllablePrefab;
+    GameObject controllablePrefab = default;
 
     [SerializeField]
     [Tooltip("The network controllable player prefab.")]
-    GameObject networkPrefab;
+    GameObject networkPrefab = default;
 
     [SerializeField]
     [Tooltip("The network player manager.")]
-    NetworkPlayerManager networkPlayerManager;
+    NetworkPlayerManager networkPlayerManager = default;
     void Awake()
     {
         if (client == null)
