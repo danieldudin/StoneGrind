@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 1212872914671652385}
   - component: {fileID: 7894805484366820375}
   - component: {fileID: 4518080922409928942}
-  - component: {fileID: -3379738401691175565}
   - component: {fileID: 3879425240500340083}
   - component: {fileID: 264726037518551062}
   - component: {fileID: -4673394238338196226}
+  - component: {fileID: -3379738401691175565}
   m_Layer: 0
-  m_Name: Sword_Green
+  m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,19 +88,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &-3379738401691175565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2778620526021884978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4819a20266d884345a063f223b5d8e9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  swordAnimator: {fileID: 0}
 --- !u!65 &3879425240500340083
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -149,3 +136,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-3379738401691175565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2778620526021884978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4819a20266d884345a063f223b5d8e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordAnimator: {fileID: 0}

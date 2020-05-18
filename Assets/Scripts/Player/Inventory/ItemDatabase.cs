@@ -9,7 +9,7 @@ public class ItemDatabase : MonoBehaviour
     private List<Item> Items { get; set; }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (Instance != null && Instance != this) {
             Destroy(gameObject);
@@ -30,7 +30,7 @@ public class ItemDatabase : MonoBehaviour
                 return item;
             }
         }
-        Debug.LogWarning("Couldnt find item" + itemSlug);
+        Debug.LogWarning("Couldnt find item: " + itemSlug);
 
         return null;
     }

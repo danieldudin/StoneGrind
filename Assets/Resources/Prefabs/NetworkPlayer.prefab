@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 2241338908744349519}
   - component: {fileID: 2241338908744349518}
   - component: {fileID: 2241338908744349524}
-  - component: {fileID: 2241338908744349527}
-  - component: {fileID: 8510843731790705279}
   - component: {fileID: -684287865576559060}
+  - component: {fileID: 2241338908744349527}
   - component: {fileID: -3171434600949360408}
   m_Layer: 0
   m_Name: NetworkPlayer
@@ -123,32 +122,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2241338908744349527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2241338908744349517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43020568ff58f584fa790c44f7ca93bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8510843731790705279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2241338908744349517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 307de0f69df94d240bef6f10f82230a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerWeaponController: {fileID: 0}
-  consumableController: {fileID: 0}
 --- !u!54 &-684287865576559060
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -165,6 +138,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2241338908744349527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241338908744349517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43020568ff58f584fa790c44f7ca93bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-3171434600949360408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2de9f6ebc3c57ec4b8fac9b709072dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
   playerAgent: {fileID: 0}
 --- !u!1 &3471296179405781682
 GameObject:
