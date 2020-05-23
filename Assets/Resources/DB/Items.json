@@ -15,7 +15,7 @@
       {
         "StatType": "Toughness",
         "BaseValue": 4,
-        "StatName": "Tougness"
+        "StatName": "Toughness"
       },
       {
         "StatType": "AttackSpeed",
@@ -26,8 +26,8 @@
   },
   {
     "objectSlug": "staff",
-    "itemName": "Cactus",
-    "description": "A long, sharp cactus.",
+    "itemName": "Staff",
+    "description": "A long, sharp staff.",
     "itemType":  "Weapon",
     "actionName": "Equip",
     "itemModifier": 0,

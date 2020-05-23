@@ -14,14 +14,13 @@ GameObject:
   - component: {fileID: 2241338908744349518}
   - component: {fileID: 2241338908744349524}
   - component: {fileID: -684287865576559060}
+  - component: {fileID: 1271411817931811850}
   - component: {fileID: 2241338908744349526}
   - component: {fileID: -5677464250876283058}
   - component: {fileID: 8510843731790705279}
-  - component: {fileID: 2241338908744349527}
-  - component: {fileID: 1271411817931811850}
   - component: {fileID: -4063532101521481826}
   - component: {fileID: -6561378046964630494}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ControllablePlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -117,7 +116,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 6
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 400
@@ -145,6 +144,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1271411817931811850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241338908744349517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e166575fc4d88043964996dba1d917f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDistance: 0.05
+  currentHealth: 100
+  maxHealth: 100
 --- !u!114 &2241338908744349526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,34 +199,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerWeaponController: {fileID: 0}
   consumableController: {fileID: 0}
+  inventoryDetailsPanel: {fileID: 0}
   inventoryPanel: {fileID: 0}
   inventoryUIController: {fileID: 0}
   userInterface: {fileID: 0}
---- !u!114 &2241338908744349527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2241338908744349517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43020568ff58f584fa790c44f7ca93bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1271411817931811850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2241338908744349517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e166575fc4d88043964996dba1d917f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveDistance: 0.05
 --- !u!114 &-4063532101521481826
 MonoBehaviour:
   m_ObjectHideFlags: 0

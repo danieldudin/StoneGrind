@@ -12,9 +12,9 @@ public class Fireball : MonoBehaviour
 
     void Start() {
         Range = 15f;
-        Damage = 4;
         spawnPosition = transform.position;
         GetComponent<Rigidbody>().AddForce(Direction * 50f);
+        Debug.Log("Fireball is gonna hit damage: " + Damage);
     }
 
     void Update() {

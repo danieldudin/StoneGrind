@@ -13,9 +13,31 @@ public class Player : MonoBehaviour
 
     Vector3 lastPosition;
 
-    void Awake()
-    {
+    public float currentHealth;
+    public float maxHealth;
+
+    public CharacterStats characterStats;
+
+    void Awake() {
         lastPosition = transform.position;
+
+        this.currentHealth = this.maxHealth;
+        characterStats = new CharacterStats(10, 10, 10);
+    }
+
+    public void TakeDamage(int amount) {
+        currentHealth -= amount;
+
+        Debug.Log("Player took " + amount + " Damage");
+
+        if (currentHealth <= 0) {
+            Die();
+        }
+    }
+
+    void Die() {
+        Debug.Log("Player died");
+        this.currentHealth = this.maxHealth;
     }
 
     void Update()
