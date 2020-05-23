@@ -10,7 +10,7 @@ public class InventoryUIDetails : MonoBehaviour
     Button selectedItemButton, itemInteractButton;
     TextMeshProUGUI itemNameText, itemDescriptionText, itemInteractButtonText, statText;
 
-    void Start() {
+    void Awake() {
         itemNameText = transform.Find("Item_Name").GetComponent<TextMeshProUGUI>();
         itemDescriptionText = transform.Find("Item_Description").GetComponent<TextMeshProUGUI>();
         itemInteractButton = transform.Find("Item_Interact").GetComponent<Button>();

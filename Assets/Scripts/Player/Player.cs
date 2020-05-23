@@ -13,16 +13,20 @@ public class Player : MonoBehaviour
 
     Vector3 lastPosition;
 
-    public float currentHealth;
-    public float maxHealth;
+    public int currentHealth;
+    public int maxHealth;
 
     public CharacterStats characterStats;
 
     void Awake() {
         lastPosition = transform.position;
-
+        this.maxHealth = 100;
         this.currentHealth = this.maxHealth;
         characterStats = new CharacterStats(10, 10, 10);
+    }
+
+    void Start() {
+        UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth);
     }
 
     public void TakeDamage(int amount) {
@@ -33,6 +37,8 @@ public class Player : MonoBehaviour
         if (currentHealth <= 0) {
             Die();
         }
+
+        UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth);
     }
 
     void Die() {

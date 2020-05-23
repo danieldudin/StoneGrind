@@ -14,7 +14,7 @@ public class PlayerWeaponController : MonoBehaviour
     IWeapon equippedWeapon;
     CharacterStats characterStats;
 
-    void Start() {
+    void Awake() {
         playerAnimator = GetComponent<Animator>();
         characterStats = GetComponent<Player>().characterStats;
 
@@ -44,6 +44,8 @@ public class PlayerWeaponController : MonoBehaviour
 
         equippedWeapon.Stats = itemToEquip.Stats;
         characterStats.AddStatBonus(itemToEquip.Stats);
+
+        UIEventHandler.ItemEquipped(itemToEquip);
 
         Debug.Log("After weapon equip, stats now are" + characterStats.GetStat(BaseStat.BaseStatType.Power).GetCalculatedStatValue());
     }

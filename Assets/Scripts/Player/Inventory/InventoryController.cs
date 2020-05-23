@@ -12,11 +12,13 @@ public class InventoryController : MonoBehaviour
     public List<Item> playerItems = new List<Item>();
     public GameObject inventoryPanel;
     public GameObject inventoryUIController;
+    public GameObject characterPanel;
     public GameObject userInterface;
 
     bool menuIsActive { get; set; }
+    bool characterPanelIsActive { get; set; }
 
-    void Start() {
+    void Awake() {
 
         if (Instance != null && Instance != this) {
             Destroy(gameObject);
@@ -31,6 +33,10 @@ public class InventoryController : MonoBehaviour
 
         inventoryPanel = Instantiate(Resources.Load<GameObject>("UI/Inventory_Panel"));
         inventoryPanel.transform.SetParent(userInterface.transform, false);
+
+        characterPanel = Instantiate(Resources.Load<GameObject>("UI/Character/Character_Panel"));
+        characterPanel.transform.SetParent(userInterface.transform, false);
+        characterPanel.SetActive(false);
 
         playerWeaponController = GetComponent<PlayerWeaponController>();
         consumableController = GetComponent<ConsumableController>();
@@ -47,6 +53,11 @@ public class InventoryController : MonoBehaviour
             Debug.Log("Toggling inventory");
             menuIsActive = !menuIsActive;
             inventoryPanel.gameObject.SetActive(menuIsActive);
+        }
+        if (Input.GetKeyDown(KeyCode.C)) {
+            Debug.Log("Toggling character panel");
+            characterPanelIsActive = !characterPanelIsActive;
+            characterPanel.gameObject.SetActive(characterPanelIsActive);
         }
     }
 
