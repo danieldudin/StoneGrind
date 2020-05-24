@@ -6,8 +6,7 @@ public class StatBonus
 {
     public int BonusValue { get; set; }
 
-    public StatBonus(int bonusValue) 
-    {
-        this.BonusValue = BonusValue;
+    public StatBonus(int bonusValue) {
+        this.BonusValue = bonusValue;
     }
 }

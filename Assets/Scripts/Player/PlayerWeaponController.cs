@@ -16,9 +16,11 @@ public class PlayerWeaponController : MonoBehaviour
 
     void Awake() {
         playerAnimator = GetComponent<Animator>();
-        characterStats = GetComponent<Player>().characterStats;
-
         spawnProjectile = transform.Find("ProjectileSpawn");
+    }
+
+    void Start() {
+        characterStats = GetComponent<Player>().characterStats;
     }
 
     public void EquipWeapon(Item itemToEquip) {
@@ -43,11 +45,11 @@ public class PlayerWeaponController : MonoBehaviour
         currentlyEquippedItem = itemToEquip;
 
         equippedWeapon.Stats = itemToEquip.Stats;
+
         characterStats.AddStatBonus(itemToEquip.Stats);
 
         UIEventHandler.ItemEquipped(itemToEquip);
-
-        Debug.Log("After weapon equip, stats now are" + characterStats.GetStat(BaseStat.BaseStatType.Power).GetCalculatedStatValue());
+        UIEventHandler.StatsChanged(characterStats);
     }
 
     void Update() {

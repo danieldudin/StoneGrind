@@ -22,6 +22,13 @@ public class MouseController : MonoBehaviour
         GetInteraction();
     }
 
+    void LateUpdate() {
+        if (playerAgent.velocity.sqrMagnitude > Mathf.Epsilon)
+        {
+            transform.rotation = Quaternion.LookRotation(playerAgent.velocity.normalized);
+        }
+    }
+
     void GetInteraction() {
         Ray interactionRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit interactionInfo;

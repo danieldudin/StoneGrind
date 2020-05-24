@@ -34,9 +34,13 @@ public class InventoryController : MonoBehaviour
         inventoryPanel = Instantiate(Resources.Load<GameObject>("UI/Inventory_Panel"));
         inventoryPanel.transform.SetParent(userInterface.transform, false);
 
+        // TODO: Move this to its own file
         characterPanel = Instantiate(Resources.Load<GameObject>("UI/Character/Character_Panel"));
         characterPanel.transform.SetParent(userInterface.transform, false);
         characterPanel.SetActive(false);
+        characterPanel.GetComponent<CharacterPanel>().player = GetComponent<Player>();
+        characterPanel.GetComponent<CharacterPanel>().InitializeStats();
+        // END TODO
 
         playerWeaponController = GetComponent<PlayerWeaponController>();
         consumableController = GetComponent<ConsumableController>();

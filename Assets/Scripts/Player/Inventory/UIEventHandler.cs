@@ -11,7 +11,7 @@ public class UIEventHandler : MonoBehaviour
     public delegate void PlayerHealthEventHandler(int currentHealth, int maxHealth);
     public static event PlayerHealthEventHandler OnPlayerHealthChanged;
 
-    public delegate void StatsEventHandler();
+    public delegate void StatsEventHandler(CharacterStats characterStats);
     public static event StatsEventHandler OnStatsChanged;
 
     public delegate void PlayerLevelEventHandler();
@@ -33,8 +33,10 @@ public class UIEventHandler : MonoBehaviour
         }
     }
 
-    public static void StatsChanged() {
-        OnStatsChanged();
+    public static void StatsChanged(CharacterStats characterStats) {
+        if (OnStatsChanged != null) {
+            OnStatsChanged(characterStats);
+        }
     }
 
     public static void PlayerLeveled() {
