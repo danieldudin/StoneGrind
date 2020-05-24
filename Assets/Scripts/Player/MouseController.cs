@@ -23,10 +23,10 @@ public class MouseController : MonoBehaviour
     }
 
     void LateUpdate() {
-        if (playerAgent.velocity.sqrMagnitude > Mathf.Epsilon)
-        {
-            transform.rotation = Quaternion.LookRotation(playerAgent.velocity.normalized);
-        }
+        // if (playerAgent.velocity.sqrMagnitude > Mathf.Epsilon)
+        // {
+        //     transform.rotation = Quaternion.LookRotation(playerAgent.velocity.normalized);
+        // }
     }
 
     void GetInteraction() {

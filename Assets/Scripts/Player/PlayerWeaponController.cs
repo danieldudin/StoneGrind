@@ -56,6 +56,9 @@ public class PlayerWeaponController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X)) {
             PerformWeaponAttack();
         }
+        if (Input.GetMouseButtonDown(1)) {
+            PerformWeaponAttack();
+        }
     }
     public void PerformWeaponAttack() {
         EquippedWeapon.GetComponent<IWeapon>().PerformAttack(CalculateDamage());

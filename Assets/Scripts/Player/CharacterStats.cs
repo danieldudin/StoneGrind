@@ -20,7 +20,6 @@ public class CharacterStats {
     public void AddStatBonus(List<BaseStat> statBonuses) {
         foreach (BaseStat statBonus in statBonuses)
         {
-            Debug.Log("Adding stat bonus" + statBonus.BaseValue);
             GetStat(statBonus.StatType).AddStatBonus(new StatBonus(statBonus.BaseValue));
         }
     }

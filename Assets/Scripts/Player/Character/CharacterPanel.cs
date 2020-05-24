@@ -30,7 +30,6 @@ public class CharacterPanel : MonoBehaviour
         levelFill = transform.Find("Level_Progress_Fill").GetComponent<Image>();
 
         // Stats
-
         playerStatPrefab = Resources.Load<GameObject>("UI/Character/Stat");
         playerStatPanel = transform.Find("Stats").gameObject;
     }
@@ -38,6 +37,15 @@ public class CharacterPanel : MonoBehaviour
     void UpdateHealth(int currentHealth, int maxHealth) {
         this.health.text = currentHealth.ToString();
         this.healthFill.fillAmount = (float)currentHealth / (float)maxHealth;
+    }
+
+    void UpdateLevel(PlayerLevel playerLevel) {
+        this.level.text = playerLevel.Level.ToString();
+        this.levelFill.fillAmount = (float)playerLevel.CurrentExperience / (float)playerLevel.RequiredExperience;
+    }
+
+    public void InitializeLevel() {
+        UpdateLevel(player.PlayerLevel);
     }
 
     public void InitializeStats()
@@ -59,14 +67,10 @@ public class CharacterPanel : MonoBehaviour
     }
 
     void EquipWeapon(Item item) {
-        Debug.Log("Weapon equipped from char panel");
+        // TODO
     }
 
     void UpdateEquippedWeapon() {
-
-    }
-
-    void UpdateLevel() {
-
+        // TODO
     }
 }

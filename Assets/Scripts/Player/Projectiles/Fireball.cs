@@ -14,7 +14,8 @@ public class Fireball : MonoBehaviour
         Range = 15f;
         spawnPosition = transform.position;
         GetComponent<Rigidbody>().AddForce(Direction * 50f);
-        Debug.Log("Fireball is gonna hit damage: " + Damage);
+
+        Debug.Log("Fireball is gonna hit: " + Damage + " damage.");
     }
 
     void Update() {
@@ -26,7 +27,8 @@ public class Fireball : MonoBehaviour
     void OnCollisionEnter(Collision col) {
         if (col.transform.tag == "Enemy") {
             col.transform.GetComponent<IEnemy>().TakeDamage(Damage);
-            Debug.Log("Enemy hit");
+
+            Debug.Log("Enemy hit.");
         }
         Extinguish();
     }

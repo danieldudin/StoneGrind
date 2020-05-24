@@ -12,17 +12,16 @@ public class InventoryUI : MonoBehaviour
 
     void Awake()
     {
+        UIEventHandler.OnItemAddedToInventory += ItemAdded;
+
         inventoryPanel = (RectTransform)this.transform;
         scrollViewContent = (RectTransform)this.transform.GetChild(0).GetChild(0).GetChild(0);
-
         itemContainer = Resources.Load<InventoryUIItem>("UI/Item_Container");
-        Debug.Log("Loaded" + itemContainer);
-        UIEventHandler.OnItemAddedToInventory += ItemAdded;
+
         inventoryPanel.gameObject.SetActive(false);
     }
 
     public void ItemAdded(Item item) {
-        Debug.Log("Item to instantiate is" + item.ItemName);
         InventoryUIItem emptyItem = Instantiate(itemContainer);
         emptyItem.SetItem(item);
         emptyItem.transform.SetParent(scrollViewContent);

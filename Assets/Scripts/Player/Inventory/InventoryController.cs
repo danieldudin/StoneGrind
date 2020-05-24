@@ -40,6 +40,7 @@ public class InventoryController : MonoBehaviour
         characterPanel.SetActive(false);
         characterPanel.GetComponent<CharacterPanel>().player = GetComponent<Player>();
         characterPanel.GetComponent<CharacterPanel>().InitializeStats();
+        characterPanel.GetComponent<CharacterPanel>().InitializeLevel();
         // END TODO
 
         playerWeaponController = GetComponent<PlayerWeaponController>();
@@ -54,12 +55,10 @@ public class InventoryController : MonoBehaviour
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.I)) {
-            Debug.Log("Toggling inventory");
             menuIsActive = !menuIsActive;
             inventoryPanel.gameObject.SetActive(menuIsActive);
         }
         if (Input.GetKeyDown(KeyCode.C)) {
-            Debug.Log("Toggling character panel");
             characterPanelIsActive = !characterPanelIsActive;
             characterPanel.gameObject.SetActive(characterPanelIsActive);
         }
@@ -69,8 +68,6 @@ public class InventoryController : MonoBehaviour
         Item item = ItemDatabase.Instance.GetItem(itemSlug);
 
         playerItems.Add(item);
-
-        Debug.Log(playerItems.Count + "items in inventory. Added " + itemSlug);
 
         UIEventHandler.ItemAddedToInventory(item);
     }

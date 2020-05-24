@@ -10,7 +10,6 @@ public class InventoryUIItem : MonoBehaviour {
     public void SetItem(Item item) {
         this.item = item;
 
-        Debug.Log("Setting item:" + item.ItemName);
         SetupItemValues();
     }
 

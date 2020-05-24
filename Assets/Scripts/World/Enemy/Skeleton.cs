@@ -11,12 +11,14 @@ public class Skeleton : MonoBehaviour, IEnemy
     private NavMeshAgent navAgent;
     public float currentHealth;
     public float maxHealth;
+    public int Experience { get; set; }
 
     private CharacterStats characterStats;
     private Collider[] withinAggroColliders;
 
     void Start() {
         maxHealth = 100;
+        Experience = 34;
         navAgent = GetComponent<NavMeshAgent>();
         skeletonAnimator = GetComponent<Animator>();
         characterStats = new CharacterStats(6, 10, 2);
@@ -47,6 +49,11 @@ public class Skeleton : MonoBehaviour, IEnemy
         }
     }
 
+    public void Die() {
+        CombatEvents.EnemyDied(this);
+        Destroy(gameObject);
+    }
+
     void ChasePlayer(Player player) {
         this.player = player;
         navAgent.SetDestination(player.transform.position);
@@ -63,9 +70,5 @@ public class Skeleton : MonoBehaviour, IEnemy
             skeletonAnimator.SetBool("isAttacking", false);
             CancelInvoke();
         }
-    }
-
-    void Die() {
-        Destroy(gameObject);
     }
 }

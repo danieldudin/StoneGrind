@@ -18,11 +18,14 @@ public class Player : MonoBehaviour
 
     public CharacterStats characterStats;
 
+    public PlayerLevel PlayerLevel { get; set; }
+
     void Awake() {
         lastPosition = transform.position;
         this.maxHealth = 100;
         this.currentHealth = this.maxHealth;
         characterStats = new CharacterStats(10, 10, 10);
+        PlayerLevel = GetComponent<PlayerLevel>();
     }
 
     void Start() {
