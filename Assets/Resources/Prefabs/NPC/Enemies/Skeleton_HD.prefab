@@ -365,6 +365,8 @@ MonoBehaviour:
     m_Bits: 256
   currentHealth: 0
   maxHealth: 0
+  pickupItem: {fileID: 6034191832651981033, guid: ae8aeb36d813cd549b74067dc990f243,
+    type: 3}
 --- !u!114 &3217495576393734315
 MonoBehaviour:
   m_ObjectHideFlags: 0

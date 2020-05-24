@@ -14,7 +14,7 @@ public class Interactable : MonoBehaviour
         isEnemy = gameObject.tag == "Enemy";
         hasInteracted = false;
 
-        playerAgent.stoppingDistance = 1f;
+        playerAgent.stoppingDistance = 2f;
         playerAgent.destination = this.transform.position;
     }
 
