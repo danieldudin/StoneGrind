@@ -14,6 +14,7 @@ public class Skeleton : MonoBehaviour, IEnemy
     public int Experience { get; set; }
     public DropTable DropTable { get; set; }
     public PickupItem pickupItem;
+    public Spawner Spawner { get; set; }
 
     private CharacterStats characterStats;
     private Collider[] withinAggroColliders;
@@ -62,6 +63,8 @@ public class Skeleton : MonoBehaviour, IEnemy
         DropLoot();
 
         CombatEvents.EnemyDied(this);
+
+        this.Spawner.Respawn();
 
         skeletonAnimator.SetBool("isDead", true);
         Destroy(gameObject);
