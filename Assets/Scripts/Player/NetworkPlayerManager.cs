@@ -6,6 +6,8 @@ using DarkRift;
 using DarkRift.Client;
 using DarkRift.Client.Unity;
 
+using TMPro;
+
 public class NetworkPlayerManager : MonoBehaviour
 {
     [SerializeField]
@@ -13,10 +15,18 @@ public class NetworkPlayerManager : MonoBehaviour
     UnityClient client = default;
 
     public Dictionary<ushort, PlayerObject> networkPlayers = new Dictionary<ushort, PlayerObject>();
+    public GameObject networkInterface;
+    public Transform playerPanel;
+    public Transform playerPanelPlayerID;
 
     public void Awake()
     {
         client.MessageReceived += MessageReceived;
+    }
+
+    void Start() {
+        networkInterface = Instantiate(Resources.Load<GameObject>("UI/NetworkInterface/NetworkInterface"));
+        playerPanel = networkInterface.GetComponent<NetworkInterface>().playerPanel;
     }
 
     void MessageReceived(object sender, MessageReceivedEventArgs e)
@@ -40,6 +50,15 @@ public class NetworkPlayerManager : MonoBehaviour
     public void Add(ushort id, PlayerObject player)
     {
         networkPlayers.Add(id, player);
+    }
+
+    public void CreatePlayerPanel(int id) {
+        GameObject newPlayerPanel = Instantiate(Resources.Load<GameObject>("UI/NetworkInterface/PlayerPanel"));
+        newPlayerPanel.transform.SetParent(playerPanel);
+
+        GameObject playerPanelPlayerID = Instantiate(Resources.Load<GameObject>("UI/NetworkInterface/PlayerID"));
+        playerPanelPlayerID.transform.SetParent(newPlayerPanel.transform);
+        playerPanelPlayerID.GetComponent<TextMeshProUGUI>().text = id.ToString();
     }
 
     public void DestroyPlayer(ushort id)

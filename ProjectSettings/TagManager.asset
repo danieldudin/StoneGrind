@@ -8,6 +8,7 @@ TagManager:
   - PlayerRightHand
   - Enemy
   - UserInterface
+  - NetworkInterface
   layers:
   - Default
   - TransparentFX

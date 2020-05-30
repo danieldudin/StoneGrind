@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     public int currentHealth;
     public int maxHealth;
+    public int ID { get; set; }
 
     public CharacterStats characterStats;
 

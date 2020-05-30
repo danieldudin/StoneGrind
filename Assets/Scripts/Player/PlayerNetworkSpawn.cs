@@ -85,6 +85,10 @@ public class PlayerNetworkSpawn : MonoBehaviour
                 PlayerObject playerObject = obj.GetComponent<PlayerObject>();
 
                 networkPlayerManager.Add(id, playerObject);
+
+                networkPlayerManager.CreatePlayerPanel(id);
+
+                GameObject.FindWithTag("NetworkInterface").GetComponent<NetworkInterface>().player = obj.GetComponent<Player>();
             }
         }
     }
